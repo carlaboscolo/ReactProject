@@ -10,9 +10,18 @@ const MovieStack = () => {
    return(
      <Stack.Navigator>
       <Stack.Screen  
-        options={{headerShown: false}}
         name="Movie"
         component={Movie}
+        options={{
+            title: 'Movie',
+            headerStyle: {
+              backgroundColor: 'rgb(80, 54, 97)',
+            },
+            headerTintColor: 'white',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}
       />
      </Stack.Navigator>
    );

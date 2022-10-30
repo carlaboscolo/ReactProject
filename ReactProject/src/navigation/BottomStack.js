@@ -16,8 +16,8 @@ const BottomStack = () => {
         <Tab.Navigator
             screenOptions={{
                 headerShown: false,
-                tabBarActiveTintColor: 'white',
-                tabBarInactiveTintColor: 'rgb(171,106,251)',
+                tabBarActiveTintColor: 'rgb(171,106,251)',
+                tabBarInactiveTintColor: 'white',
                 tabBarStyle: {
                     backgroundColor: '#000',
                 },

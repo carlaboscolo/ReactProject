@@ -11,7 +11,7 @@ const SerieStack = () => {
      <Stack.Navigator>
       <Stack.Screen  
         options={{headerShown: false}}
-        name="Serie"
+        name="Serie Tv"
         component={Serie}
       />
      </Stack.Navigator>
