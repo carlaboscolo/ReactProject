@@ -1,48 +1,21 @@
+import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import { NavigationContainer } from '@react-navigation/native';
+import { StyleSheet, Text, View } from 'react-native';
 
-
-import Icon from 'react-native-vector-icons/FontAwesome';
-//screens
-import SeriePage from './src/screens/Serie';
-import FilmPage from './src/screens/Films';
-
-const Tab = createMaterialBottomTabNavigator();
-
-const App = () => {
+export default function App() {
   return (
-    <NavigationContainer> 
-    <Tab.Navigator>
-   
-
-
-
-    <Tab.Screen
-        options={{
-          title: 'Serie',
-          tabBarIcon: ({color}) => (
-             <Icon name="image" size={26} color={color} />
-          ),
-        }}
-        name="Serie"
-        component={SeriePage}
-      />
-
-<Tab.Screen
-        options={{
-          title: 'Film',
-          tabBarIcon: ({color}) => (
-             <Icon name="film" size={26} color={color} />
-          ),
-        }}
-        name="Film"
-        component={FilmPage}
-      />
-
-  </Tab.Navigator>
-  </NavigationContainer>
+    <View style={styles.container}>
+      <Text>Open up App.js to start working on your app!</Text>
+      <StatusBar style="auto" />
+    </View>
   );
-};
+}
 
-export default App;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
