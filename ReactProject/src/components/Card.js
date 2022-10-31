@@ -1,39 +1,40 @@
-import React, {memo}  from "react";
-import { View , StyleSheet, Text, Image } from "react-native";
+import React, { memo } from "react";
+import { View, StyleSheet, Text, Image, TouchableOpacity } from "react-native";
 
 
 
-const Card = memo(({image, title, releaseDate, vote }) => {
+const Card = memo(({ image, title, releaseDate, vote, onPress }) => {
 
-const imageUrl =  "https://image.tmdb.org/t/p/w500/"+image;
+    const imageUrl = "https://image.tmdb.org/t/p/w500/" + image;
 
-    return(
-        <View style={styles.rowContainer}>
-          <View style={styles.innerContainer}>
-            {/* immagine  */}
-            <View style={styles.containerImage}>
-               {/* immagine   */} 
-               <Image source={{ uri: imageUrl }} style={styles.image} />
-           </View> 
-            {/* testo  */}
-            <View style={styles.containerText}>
-                <View style={{ flex: 1 }}>
-                    <Text style={styles.title}> {title} </Text>
-                    <Text style={styles.date}> Data di uscita : {releaseDate} </Text>
-                    <Text style={styles.vote}> Voto : {vote} </Text>
+    return (
+        <TouchableOpacity onPress={onPress}>
+            <View style={styles.rowContainer}>
+                <View style={styles.innerContainer}>
+                    {/* immagine  */}
+                    <View style={styles.containerImage}>
+                        {/* immagine   */}
+                        <Image source={{ uri: imageUrl }} style={styles.image} />
+                    </View>
+                    {/* testo  */}
+                    <View style={styles.containerText}>
+                        <View style={{ flex: 1 }}>
+                            <Text style={styles.title}> {title} </Text>
+                            <Text style={styles.date}> Data di uscita : {releaseDate} </Text>
+                            <Text style={styles.vote}> Voto : {vote} </Text>
+                        </View>
+                    </View>
                 </View>
             </View>
-        </View>
-    </View>
-
+        </TouchableOpacity>
 
     );
 });
 
 const styles = StyleSheet.create({
-    container : {
+    container: {
         flex: 1,
-        backgroundColor: 'rgb(24,24,24)', 
+        backgroundColor: 'rgb(24,24,24)',
     },
 
     rowContainer: {

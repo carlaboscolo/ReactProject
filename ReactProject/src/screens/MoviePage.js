@@ -13,7 +13,7 @@ const getMoviePopular = async () => {
     return data.results;
 }
 
-const MoviePage = () => {
+const MoviePage = ({navigation}) => {
 
     const [list, setList] = useState([]);
 
@@ -31,6 +31,7 @@ const MoviePage = () => {
                   title = {item.original_title}
                   releaseDate = {item.release_date}
                   vote = {item.vote_average}
+                  onPress = {() => navigation.navigate('MovieDetail', {id : item.id})}
                />
             );
         }, []);

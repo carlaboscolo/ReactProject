@@ -11,7 +11,7 @@ const getSeriePopular = async () => {
     return data.results;
  }
  
-const SeriePage = () => {
+const SeriePage = ({navigation}) => {
 
     const [list, setList] = useState([]);
 
@@ -24,10 +24,11 @@ const SeriePage = () => {
  
         return (
                <Card
-                  image = {item.poster_path}
+                   image = {item.poster_path}
                   title = {item.original_name}
                   releaseDate = {item.first_air_date}
                   vote = {item.vote_average}
+                  onPress = {() => navigation.navigate('SerieDetail', {id : item.id})}
                />
             );
         }, []);
