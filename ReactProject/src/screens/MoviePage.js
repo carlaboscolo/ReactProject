@@ -8,7 +8,7 @@ const getMoviePopular = async () => {
     return data.results;
 }
 
-const Movie = () => {
+const MoviePage = () => {
 
     const [list, setList] = useState([]);
 
@@ -88,8 +88,8 @@ const styles = StyleSheet.create({
     },
     image: {
         width: '100%',
-        height: '100%',
-        resizeMode: 'cover',
+        height: '250%',
+       // resizeMode: 'cover',
     },
     containerText: {
         flexDirection: 'row',
@@ -103,4 +103,4 @@ const styles = StyleSheet.create({
     location: { fontSize: 14 },
 });
 
-export default Movie;
+export default MoviePage;

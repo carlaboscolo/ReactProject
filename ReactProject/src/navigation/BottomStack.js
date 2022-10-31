@@ -5,6 +5,8 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 //navigation
 import MovieStack from "./MovieStack";
 import SerieStack from "./SerieStack";
+import SearchStack from "./SearchStack";
+import UserStack from "./UserStack";
 
 
 
@@ -44,6 +46,31 @@ const BottomStack = () => {
                 name="Film"
                 component={MovieStack}
             />
+
+            <Tab.Screen
+                options={{
+                    headerShown: false,
+                    tabBarIcon: ({ color }) => (
+                        <Icon name="search" size={26} color={color} />
+                    ),
+                }}
+                name="Search"
+                component={SearchStack}
+            />
+
+            <Tab.Screen
+                options={{
+                    headerShown: false,
+                    tabBarIcon: ({ color }) => (
+                        <Icon name="user" size={26} color={color} />
+                    ),
+                }}
+                name="User"
+                component={UserStack}
+            />
+
+
+
         </Tab.Navigator>
     );
 };

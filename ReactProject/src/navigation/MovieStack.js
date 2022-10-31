@@ -2,7 +2,7 @@ import React from "react";
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 //screens
-import Movie from "../screens/Movie";
+import MoviePage from "../screens/MoviePage";
 
 const Stack = createNativeStackNavigator();
 
@@ -11,9 +11,9 @@ const MovieStack = () => {
      <Stack.Navigator>
       <Stack.Screen  
         name="Movie"
-        component={Movie}
+        component={MoviePage}
         options={{
-            title: 'Movie',
+            title: 'Film',
             headerStyle: {
               backgroundColor: 'rgb(80, 54, 97)',
             },

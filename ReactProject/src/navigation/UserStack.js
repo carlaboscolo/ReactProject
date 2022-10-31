@@ -1,19 +1,20 @@
 import React from "react";
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
+
 //screens
-import SeriePage from "../screens/SeriePage";
+import UserPage from "../screens/UserPage";
 
 const Stack = createNativeStackNavigator();
 
-const SerieStack = () => {
+const UserStack = () => {
    return(
      <Stack.Navigator>
       <Stack.Screen  
-        name="Serie Tv"
-        component={SeriePage}
+        name="User"
+        component={UserPage}
         options={{
-          title: 'Serie',
+          title: 'Profilo',
           headerStyle: {
             backgroundColor: 'rgb(80, 54, 97)',
           },
@@ -27,4 +28,4 @@ const SerieStack = () => {
    );
 };
 
-export default SerieStack;
+export default UserStack;

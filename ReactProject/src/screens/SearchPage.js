@@ -2,10 +2,10 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
 
-const Serie = () => {
+const SearchPage = () => {
  return(
     <View style = {styles.container}>
-        <Text> Serie </Text>
+        <Text> Search </Text>
     </View>
  );
 };
@@ -19,4 +19,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Serie;
+export default SearchPage;
