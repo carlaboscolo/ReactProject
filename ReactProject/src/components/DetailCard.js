@@ -1,8 +1,7 @@
 import React, { memo } from "react";
-import { View, StyleSheet, Text, Image, TouchableOpacity, ScrollView, ImageBackground } from "react-native";
-import { Colors } from "react-native/Libraries/NewAppScreen";
+import { View, StyleSheet, Text, Image, ScrollView } from "react-native";
 
-const DetailCard = memo(({ image, title, releaseDate, vote, onPress }) => {
+const DetailCard = memo(({ }) => {
 
     
     return(
