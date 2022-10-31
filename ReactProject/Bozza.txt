@@ -1,0 +1,36 @@
+episode
+
+
+   /*
+https://api.themoviedb.org/3/tv/94997/season/1/episode/1?api_key=a7c4848fcfb89f8bef0757f282d0a463&language=en-US
+
+    const id = data.id;
+ 
+    const getEpisode = async () => {
+       const apiKey = "a7c4848fcfb89f8bef0757f282d0a463";
+       const response = await fetch("https://api.themoviedb.org/3/tv/" + id + "/season/" +1+"/episode/"+1+"?api_key="+ apiKey + "&language=en-US")
+       const data = await response.json();
+       return data.results;
+    }
+ 
+    const [episode, setEpisode] = useState([]);
+ 
+    useEffect(() => {
+       getEpisode().then(setEpisode);
+    }, []);
+ 
+    const renderItem = useCallback(({ item }) => {
+       console.log(item);
+ 
+       return (
+         <Text> </Text>
+       ); 
+    }, []);
+
+      <View style={styles.container}>
+         <FlatList
+            data={episode}
+            renderItem={renderItem}
+         />
+      </View>
+ */

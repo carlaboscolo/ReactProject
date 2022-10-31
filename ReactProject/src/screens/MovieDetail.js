@@ -1,21 +1,24 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
 
 
-const MovieDetail = () => {
+//component
+import DetailCard from "../components/DetailCard";
+
+const MovieDetail = ({ route, navigation }) => {
+
+    const { data } = route.params;
+
     return (
-        <View style={styles.container}>
-        </View>
+        <DetailCard
+            image={data.poster_path}
+            title={data.original_title}
+            releaseDate={data.release_date}
+            vote={data.vote_average}
+            description={data.overview}
+        />
     );
 };
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: 'rgb(24,24,24)',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});
+
 
 export default MovieDetail;

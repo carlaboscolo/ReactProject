@@ -18,9 +18,9 @@ const Card = memo(({ image, title, releaseDate, vote, onPress }) => {
                     {/* testo  */}
                     <View style={styles.containerText}>
                         <View style={{ flex: 1 }}>
-                            <Text style={styles.title}> {title} </Text>
-                            <Text style={styles.date}> Data di uscita : {releaseDate} </Text>
-                            <Text style={styles.vote}> Voto : {vote} </Text>
+                            <Text style={styles.title}>{title} </Text>
+                            <Text style={styles.date}>Data di uscita : {releaseDate} </Text>
+                            <Text style={styles.vote}>Voto : {vote} </Text>
                         </View>
                     </View>
                 </View>

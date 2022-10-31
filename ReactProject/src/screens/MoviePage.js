@@ -23,7 +23,7 @@ const MoviePage = ({ navigation }) => {
 
 
     const renderItem = useCallback(({ item }) => {
-        // console.log(item);
+        console.log(item);
 
         return (
             <Card
@@ -31,7 +31,7 @@ const MoviePage = ({ navigation }) => {
                 title={item.original_title}
                 releaseDate={item.release_date}
                 vote={item.vote_average}
-                onPress={() => navigation.navigate('MovieDetail', { id: item.id })}
+                onPress={() => navigation.navigate('MovieDetail', { data : item  })}
             />
         );
     }, []);
