@@ -50,7 +50,7 @@ const MoviePage = () => {
          <View style = {styles.container}> 
           <FlatList 
                 data={list}
-                renderItem={renderItem} //viene richiamata la costante sopra
+                renderItem={renderItem} 
                />
             </View>     
               

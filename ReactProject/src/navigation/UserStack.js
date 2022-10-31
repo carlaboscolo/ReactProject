@@ -4,7 +4,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 //screens
 import UserPage from "../screens/UserPage";
-
+ 
 const Stack = createNativeStackNavigator();
 
 const UserStack = () => {
