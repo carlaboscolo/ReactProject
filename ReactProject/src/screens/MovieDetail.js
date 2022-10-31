@@ -1,6 +1,5 @@
 import React from "react";
 
-
 //component
 import DetailCard from "../components/DetailCard";
 

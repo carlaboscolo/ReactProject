@@ -8,10 +8,7 @@ import SerieStack from "./SerieStack";
 import SearchStack from "./SearchStack";
 import UserStack from "./UserStack";
 
-
-
 const Tab = createBottomTabNavigator();
-
 
 const BottomStack = () => {
     return (

@@ -1,8 +1,6 @@
 import React, { memo } from "react";
 import { View, StyleSheet, Text, Image, TouchableOpacity } from "react-native";
 
-
-
 const Card = memo(({ image, title, releaseDate, vote, onPress }) => {
 
     const imageUrl = "https://image.tmdb.org/t/p/w500/" + image;

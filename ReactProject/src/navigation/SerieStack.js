@@ -5,7 +5,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SeriePage from "../screens/SeriePage";
 import SerieDetail from "../screens/SerieDetail";
 
-
 const Stack = createNativeStackNavigator();
 
 const SerieStack = () => {
