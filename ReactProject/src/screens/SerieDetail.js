@@ -4,18 +4,19 @@ import { View, StyleSheet } from "react-native";
 
 const SerieDetail = () => {
 return(
-   <View style = {styles.container}>
-   </View>
+  <View style = {styles.container}>
+  </View>
 );
 };
 
 const styles = StyleSheet.create({
-   container : {
-       flex: 1,
-       backgroundColor: 'rgb(24,24,24)',
-       alignItems : 'center',
-       justifyContent : 'center',
-   },
+  container : {
+      flex: 1,
+      backgroundColor: 'rgb(24,24,24)',
+      alignItems : 'center',
+      justifyContent : 'center',
+  },
 });
 
 export default SerieDetail;
+

@@ -1,16 +1,16 @@
 import React from "react";
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
 //screens
 import UserPage from "../screens/UserPage";
- 
+
 const Stack = createNativeStackNavigator();
 
 const UserStack = () => {
-   return(
-     <Stack.Navigator>
-      <Stack.Screen  
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
         name="User"
         component={UserPage}
         options={{
@@ -24,8 +24,8 @@ const UserStack = () => {
           },
         }}
       />
-     </Stack.Navigator>
-   );
+    </Stack.Navigator>
+  );
 };
 
 export default UserStack;

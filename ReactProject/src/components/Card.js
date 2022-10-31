@@ -13,7 +13,6 @@ const Card = memo(({ image, title, releaseDate, vote, onPress }) => {
                 <View style={styles.innerContainer}>
                     {/* immagine  */}
                     <View style={styles.containerImage}>
-                        {/* immagine   */}
                         <Image source={{ uri: imageUrl }} style={styles.image} />
                     </View>
                     {/* testo  */}
@@ -32,11 +31,6 @@ const Card = memo(({ image, title, releaseDate, vote, onPress }) => {
 });
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: 'rgb(24,24,24)',
-    },
-
     rowContainer: {
         height: 280,
         padding: 16,

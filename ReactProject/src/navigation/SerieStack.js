@@ -1,5 +1,5 @@
 import React from "react";
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 //screens
 import SeriePage from "../screens/SeriePage";
@@ -9,9 +9,9 @@ import SerieDetail from "../screens/SerieDetail";
 const Stack = createNativeStackNavigator();
 
 const SerieStack = () => {
-   return(
-     <Stack.Navigator>
-      <Stack.Screen  
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
         name="Serie Tv"
         component={SeriePage}
         options={{
@@ -25,7 +25,7 @@ const SerieStack = () => {
           },
         }}
       />
-       <Stack.Screen  
+      <Stack.Screen
         name="SerieDetail"
         component={SerieDetail}
         options={{
@@ -39,8 +39,8 @@ const SerieStack = () => {
           },
         }}
       />
-     </Stack.Navigator>
-   );
+    </Stack.Navigator>
+  );
 };
 
 export default SerieStack;
