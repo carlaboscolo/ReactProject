@@ -3,23 +3,24 @@ import { View , StyleSheet, Text, Image } from "react-native";
 
 
 
-const Card = memo(() => {
+const Card = memo(({image, title, releaseDate, vote }) => {
+
+const imageUrl =  "https://image.tmdb.org/t/p/w500/"+image;
+
     return(
         <View style={styles.rowContainer}>
-        <View style={styles.innerContainer}>
+          <View style={styles.innerContainer}>
             {/* immagine  */}
             <View style={styles.containerImage}>
-             {/* immagine   
-              <Image source={{ uri: "https://image.tmdb.org/t/p/w500/"+ item.poster_path}} style={styles.image} />
-            */} 
-                <Image source={{ uri: "https://larepubblicadeglianimali.com/wp-content/uploads/2022/01/gattino-royal-canin.jpg"}} style={styles.image} />
-             </View> 
+               {/* immagine   */} 
+               <Image source={{ uri: imageUrl }} style={styles.image} />
+           </View> 
             {/* testo  */}
             <View style={styles.containerText}>
                 <View style={{ flex: 1 }}>
-                    <Text style={styles.title}> Titolo </Text>
-                    <Text style={styles.date}> Data </Text>
-                    <Text style={styles.vote}> Voto </Text>
+                    <Text style={styles.title}> {title} </Text>
+                    <Text style={styles.date}> Data di uscita : {releaseDate} </Text>
+                    <Text style={styles.vote}> Voto : {vote} </Text>
                 </View>
             </View>
         </View>
@@ -60,8 +61,8 @@ const styles = StyleSheet.create({
     },
     image: {
         width: '100%',
-        height: '100%',
-        //resizeMode: 'cover',
+        height: '250%',
+        resizeMode: 'cover',
     },
     containerText: {
         flexDirection: 'row',

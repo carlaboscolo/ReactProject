@@ -1,9 +1,12 @@
-{/*  */} 
+{/*  */}  -> commenti
 
 #Bottom Navigation
 npm install @react-navigation/bottom-tabs
 npm install @react-navigation/native-stack
 
+#api
+https://developers.themoviedb.org/3/movies/get-movie-details -> movie api
 
-//card props
- https://stackoverflow.com/questions/59952140/react-moviedb-api-wont-display-movie-poster
+come utilizzarlo :
+registrarsi su : https://www.themoviedb.org
+andare su profilo/impostazioni/Api -> prendere Api Key
