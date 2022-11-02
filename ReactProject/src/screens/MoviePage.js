@@ -5,22 +5,13 @@ import { FlatList, Image, StyleSheet, Text, View } from 'react-native';
 //component
 import Card from "../components/Card";
 
+//hooks
+import useMovieList from "../hooks/useMovieList";
 
-const getMoviePopular = async () => {
-    const apiKey = "a7c4848fcfb89f8bef0757f282d0a463";
-    const response = await fetch("https://api.themoviedb.org/3/movie/popular?api_key=" + apiKey + "&language=en-US&page=1")
-    const data = await response.json();
-    return data.results;
-}
 
 const MoviePage = ({ navigation }) => {
 
-    const [list, setList] = useState([]);
-
-    useEffect(() => {
-        getMoviePopular().then(setList);
-    }, []);
-
+    const { movieList } = useMovieList();
 
     const renderItem = useCallback(({ item }) => {
         // console.log(item);
@@ -40,7 +31,7 @@ const MoviePage = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <FlatList
-                data={list}
+                data={movieList}
                 renderItem={renderItem}
             />
         </View>

@@ -4,20 +4,12 @@ import { View, Text, StyleSheet, FlatList } from "react-native";
 //component
 import Card from "../components/Card";
 
-const getSeriePopular = async () => {
-    const apiKey = "a7c4848fcfb89f8bef0757f282d0a463";
-    const response = await fetch("https://api.themoviedb.org/3/tv/popular?api_key=" + apiKey + "&language=en-US&page=1")
-    const data = await response.json();
-    return data.results;
-}
+//hooks
+import useSerieList from "../hooks/useSerieList";
 
 const SeriePage = ({ navigation }) => {
 
-    const [list, setList] = useState([]);
-
-    useEffect(() => {
-        getSeriePopular().then(setList);
-    }, []);
+   const {serieList} = useSerieList();
 
     const renderItem = useCallback(({ item }) => {
         // console.log(item);
@@ -37,7 +29,7 @@ const SeriePage = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <FlatList
-                data={list}
+                data={serieList}
                 renderItem={renderItem}
             />
         </View>
