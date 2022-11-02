@@ -1,6 +1,5 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback } from "react";
 import { FlatList, Image, StyleSheet, Text, View } from 'react-native';
-
 
 //component
 import Card from "../components/Card";

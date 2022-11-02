@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useCallback } from "react";
-import { View, Text, StyleSheet, FlatList } from "react-native";
+import React, { useCallback } from "react";
+import { View, StyleSheet, FlatList } from "react-native";
 
 //component
 import Card from "../components/Card";
@@ -9,7 +9,7 @@ import useSerieList from "../hooks/useSerieList";
 
 const SeriePage = ({ navigation }) => {
 
-   const {serieList} = useSerieList();
+    const { serieList } = useSerieList();
 
     const renderItem = useCallback(({ item }) => {
         // console.log(item);
@@ -20,7 +20,7 @@ const SeriePage = ({ navigation }) => {
                 title={item.original_name}
                 releaseDate={item.first_air_date}
                 vote={item.vote_average}
-                onPress={() => navigation.navigate('SerieDetail', { data : item })}
+                onPress={() => navigation.navigate('SerieDetail', { data: item })}
             />
         );
     }, []);

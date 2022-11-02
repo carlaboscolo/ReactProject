@@ -1,5 +1,4 @@
-import  { useEffect, useState } from "react"
-
+import { useEffect, useState } from "react"
 
 const getMoviePopular = async () => {
     const apiKey = "a7c4848fcfb89f8bef0757f282d0a463";
@@ -7,7 +6,6 @@ const getMoviePopular = async () => {
     const data = await response.json();
     return data.results;
 }
-
 
 const useMovieList = () => {
 

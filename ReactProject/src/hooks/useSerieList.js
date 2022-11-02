@@ -20,5 +20,4 @@ const useSerieList = () => {
     }
 };
 
-
 export default useSerieList;
