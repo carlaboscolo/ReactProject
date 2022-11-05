@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import { View, StyleSheet, Text, Image, TouchableOpacity } from "react-native";
 
-const VerticalCard = memo(({ image, title, releaseDate, vote, onPress }) => {
+const Card = memo(({ image, title, releaseDate, vote, onPress }) => {
 
     const imageUrl = "https://image.tmdb.org/t/p/w500/" + image;
 
@@ -30,8 +30,8 @@ const VerticalCard = memo(({ image, title, releaseDate, vote, onPress }) => {
 
 const styles = StyleSheet.create({
     rowContainer: {
-        height: 380,
-        padding: 16,
+        height: 390,
+        padding: 26,
     },
     innerContainer: {
         borderRadius: 10,
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     },
     image: {
         width: '100%',
-        height: '250%',
+        height: '150%',
         resizeMode: 'cover',
     },
     containerText: {
