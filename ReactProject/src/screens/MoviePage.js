@@ -7,7 +7,6 @@ import Card from "../components/Card";
 //hooks
 import useMovieList from "../hooks/useMovieList";
 
-
 const MoviePage = ({ navigation }) => {
 
     const { movieList } = useMovieList();
@@ -26,7 +25,6 @@ const MoviePage = ({ navigation }) => {
         );
     }, []);
 
-
     return (
         <View style={styles.container}>
             <FlatList
@@ -42,8 +40,6 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: 'rgb(24,24,24)',
     },
-
-
 });
 
 export default MoviePage;

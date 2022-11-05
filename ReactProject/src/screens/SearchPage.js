@@ -20,6 +20,7 @@ const SearchPage = ({ navigation }) => {
         // console.warn(query);
     };
 
+    //movie top rated
     const filteredMovieTopList = useMemo(() => {
         if (!searchQuery) {
             return movieTopList;
@@ -31,6 +32,7 @@ const SearchPage = ({ navigation }) => {
         return search;
     }, [movieTopList, searchQuery]);
 
+    //movie popular
     const filteredMovieList = useMemo(() => {
         if (!searchQuery) {
             return movieList;
@@ -42,6 +44,7 @@ const SearchPage = ({ navigation }) => {
         return search;
     }, [movieList, searchQuery]);
 
+    //serie top rated
     const filteredSerieTopList = useMemo(() => {
         if (!searchQuery) {
             return serieTopList;
@@ -53,6 +56,7 @@ const SearchPage = ({ navigation }) => {
         return search;
     }, [serieTopList, searchQuery]);
 
+    //serie popular
     const filteredSerieList = useMemo(() => {
         if (!searchQuery) {
             return serieList;
@@ -83,7 +87,7 @@ const SearchPage = ({ navigation }) => {
             <VerticalCard
                 image={item.poster_path}
                 title={item.original_name}
-                onPress={() => navigation.navigate('SerieDetailSearch', { data: item, id : item.id})}
+                onPress={() => navigation.navigate('SerieDetailSearch', { data: item, id: item.id })}
             />
         );
     }, []);
@@ -127,8 +131,6 @@ const SearchPage = ({ navigation }) => {
                         renderItem={renderItemSerie}
                     />
                     <View style={styles.bottomContainer} />
-
-                    
                 </ScrollView>
             </SafeAreaView>
         </View>

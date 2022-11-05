@@ -15,7 +15,6 @@ const SerieDetail = ({ route, navigation }) => {
   //console.log(id);
   const { episodeList } = useEpisodeSerieList(id);
 
-  
   const renderItemSerie = useCallback(({ item }) => {
     // console.log(item); 
 
@@ -69,4 +68,3 @@ const styles = StyleSheet.create({
 });
 
 export default SerieDetail;
-

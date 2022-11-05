@@ -20,11 +20,10 @@ const SeriePage = ({ navigation }) => {
                 title={item.original_name}
                 releaseDate={item.first_air_date}
                 vote={item.vote_average}
-                onPress={() => navigation.navigate('SerieDetail', { data: item, id : item.id })}
+                onPress={() => navigation.navigate('SerieDetail', { data: item, id: item.id })}
             />
         );
     }, []);
-
 
     return (
         <View style={styles.container}>
@@ -35,7 +34,6 @@ const SeriePage = ({ navigation }) => {
         </View>
     );
 };
-
 
 const styles = StyleSheet.create({
     container: {
