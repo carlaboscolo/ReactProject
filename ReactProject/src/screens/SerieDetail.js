@@ -6,30 +6,16 @@ import DetailCard from "../components/DetailCard";
 import VerticalCard from "../components/VerticalCard";
 
 //hooks
-
-const API_KEY = "a7c4848fcfb89f8bef0757f282d0a463";
-
-
-const getEpisode = async (id) => {
-  const response = await fetch("https://api.themoviedb.org/3/tv/" + id + "/season/{season_number}?api_key=" + API_KEY);
-  const data = await response.json();
-  return data.episodes;
-  // setData(data.episodes);
-}
-
+import useEpisodeSerieList from "../hooks/useEpisodeSerieList";
 
 const SerieDetail = ({ route, navigation }) => {
 
   const { data } = route.params;
   const { id } = route.params;
   //console.log(id);
+  const { episodeList } = useEpisodeSerieList(id);
 
-  const [episodeList, setEpisodeList] = useState([]);
-
-  useEffect(() => {
-    getEpisode(id).then(setEpisodeList);
-  }, []);
-
+  
   const renderItemSerie = useCallback(({ item }) => {
     // console.log(item); 
 
