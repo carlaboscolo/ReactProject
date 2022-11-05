@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect, useMemo } from "react";
 import { View, Text, StyleSheet, FlatList, ScrollView, SafeAreaView } from "react-native";
-import { Searchbar } from 'react-native-paper'; 
+import { Searchbar } from 'react-native-paper';
 
 //component
 import VerticalCard from "../components/VerticalCard";
@@ -9,32 +9,11 @@ import VerticalCard from "../components/VerticalCard";
 import useMovieList from "../hooks/useMovieList";
 import useSerieList from "../hooks/useSerieList";
 
-const getMovieTopRated = async () => {
-    const apiKey = "a7c4848fcfb89f8bef0757f282d0a463";
-    const response = await fetch("https://api.themoviedb.org/3/movie/top_rated?api_key=" + apiKey + "&language=en-US&page=1")
-    const data = await response.json();
-    return data.results;
-}
-
-const getSerieTopRated = async () => {
-    const apiKey = "a7c4848fcfb89f8bef0757f282d0a463";
-    const response = await fetch("https://api.themoviedb.org/3/tv/top_rated?api_key=" + apiKey + "&language=en-US&page=1")
-    const data = await response.json();
-    return data.results;
-}
-
 const SearchPage = ({ navigation }) => {
 
     const [searchQuery, setSearchQuery] = useState('');
-    const [movieTopList, setMovieTopList] = useState([]);
-    const [serieTopList, setSerieTopList] = useState([]);
-    const { movieList } = useMovieList();
-    const { serieList } = useSerieList();
-
-    useEffect(() => {
-        getMovieTopRated().then(setMovieTopList);
-        getSerieTopRated().then(setSerieTopList);
-    }, []);
+    const { movieList, movieTopList } = useMovieList();
+    const { serieList, serieTopList } = useSerieList();
 
     const onChangeSearch = (query) => {
         setSearchQuery(query);
@@ -109,9 +88,6 @@ const SearchPage = ({ navigation }) => {
         );
     }, []);
 
-
-
-
     return (
         <View style={styles.container}>
             <SafeAreaView>
@@ -123,36 +99,36 @@ const SearchPage = ({ navigation }) => {
                     />
                 </View>
                 <ScrollView
-                contentContainerStyle={styles.scroll}
-                scrollEnabled={true}
-                showsVerticalScrollIndicator={false}  >
-                <Text style={styles.title} > Top Film </Text>
-                <FlatList
-                    horizontal={true}
-                    data={filteredMovieTopList}
-                    renderItem={renderItemMovie}
-                />
-                <Text style={styles.title} > Popular Film </Text>
-                <FlatList
-                    horizontal={true}
-                    data={filteredMovieList}
-                    renderItem={renderItemMovie}
-                />
-                <Text style={styles.title} > Top Serie TV </Text>
-                <FlatList
-                    horizontal={true}
-                    data={filteredSerieTopList}
-                    renderItem={renderItemSerie}
-                />
-                 <Text style={styles.title} > Popular Serie TV </Text>
-                <FlatList
-                    horizontal={true}
-                    data={filteredSerieList}
-                    renderItem={renderItemSerie}
-                />
-                <View style = {styles.bottomContainer}>
+                    contentContainerStyle={styles.scroll}
+                    scrollEnabled={true}
+                    showsVerticalScrollIndicator={false}  >
+                    <Text style={styles.title} > Top Film </Text>
+                    <FlatList
+                        horizontal={true}
+                        data={filteredMovieTopList}
+                        renderItem={renderItemMovie}
+                    />
+                    <Text style={styles.title} > Popular Film </Text>
+                    <FlatList
+                        horizontal={true}
+                        data={filteredMovieList}
+                        renderItem={renderItemMovie}
+                    />
+                    <Text style={styles.title} > Top Serie TV </Text>
+                    <FlatList
+                        horizontal={true}
+                        data={filteredSerieTopList}
+                        renderItem={renderItemSerie}
+                    />
+                    <Text style={styles.title} > Popular Serie TV </Text>
+                    <FlatList
+                        horizontal={true}
+                        data={filteredSerieList}
+                        renderItem={renderItemSerie}
+                    />
+                    <View style={styles.bottomContainer}>
 
-                </View>
+                    </View>
                 </ScrollView>
             </SafeAreaView>
         </View>
@@ -173,14 +149,14 @@ const styles = StyleSheet.create({
         fontSize: 25,
         color: 'white',
         fontWeight: 'bold',
-        marginTop : 20,
-        marginLeft : 10,
+        marginTop: 20,
+        marginLeft: 10,
     },
     scroll: {
         flexGrow: 1,
     },
-    bottomContainer : {
-        marginBottom : 80,
+    bottomContainer: {
+        marginBottom: 80,
     }
 });
 
