@@ -14,7 +14,7 @@ const getSerieTopRated = async () => {
     return data.results;
 }
 
-const useSerieList = () => {
+const useSerieList = (id) => {
 
     const [serieList, setSerieList] = useState([]);
     const [serieTopList, setSerieTopList] = useState([]);

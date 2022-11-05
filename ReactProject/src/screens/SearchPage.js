@@ -83,7 +83,7 @@ const SearchPage = ({ navigation }) => {
             <VerticalCard
                 image={item.poster_path}
                 title={item.original_name}
-                onPress={() => navigation.navigate('SerieDetailSearch', { data: item })}
+                onPress={() => navigation.navigate('SerieDetailSearch', { data: item, id : item.id})}
             />
         );
     }, []);
@@ -126,9 +126,9 @@ const SearchPage = ({ navigation }) => {
                         data={filteredSerieList}
                         renderItem={renderItemSerie}
                     />
-                    <View style={styles.bottomContainer}>
+                    <View style={styles.bottomContainer} />
 
-                    </View>
+                    
                 </ScrollView>
             </SafeAreaView>
         </View>
