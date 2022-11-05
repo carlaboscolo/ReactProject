@@ -1,12 +1,13 @@
 import React, { useState, useCallback, useEffect, useMemo } from "react";
-import { View, Text, StyleSheet, FlatList } from "react-native";
-import { Searchbar } from 'react-native-paper';
-import { SafeAreaView } from 'react-native';
+import { View, Text, StyleSheet, FlatList, ScrollView, SafeAreaView } from "react-native";
+import { Searchbar } from 'react-native-paper'; 
 
 //component
-import Card from "../components/Card";
+import VerticalCard from "../components/VerticalCard";
 
-
+//hooks
+import useMovieList from "../hooks/useMovieList";
+import useSerieList from "../hooks/useSerieList";
 
 const getMovieTopRated = async () => {
     const apiKey = "a7c4848fcfb89f8bef0757f282d0a463";
@@ -25,18 +26,31 @@ const getSerieTopRated = async () => {
 const SearchPage = ({ navigation }) => {
 
     const [searchQuery, setSearchQuery] = useState('');
-    const [movieList, setMovieList] = useState([]);
-    const [serieList, setSerieList] = useState([]);
+    const [movieTopList, setMovieTopList] = useState([]);
+    const [serieTopList, setSerieTopList] = useState([]);
+    const { movieList } = useMovieList();
+    const { serieList } = useSerieList();
 
     useEffect(() => {
-        getMovieTopRated().then(setMovieList);
-        getSerieTopRated().then(setSerieList);
+        getMovieTopRated().then(setMovieTopList);
+        getSerieTopRated().then(setSerieTopList);
     }, []);
 
     const onChangeSearch = (query) => {
         setSearchQuery(query);
         // console.warn(query);
     };
+
+    const filteredMovieTopList = useMemo(() => {
+        if (!searchQuery) {
+            return movieTopList;
+        }
+
+        const search = movieTopList.filter(item => item.original_title.toLowerCase().startsWith(searchQuery.toLowerCase()));
+        //console.log(search);
+
+        return search;
+    }, [movieTopList, searchQuery]);
 
     const filteredMovieList = useMemo(() => {
         if (!searchQuery) {
@@ -46,9 +60,19 @@ const SearchPage = ({ navigation }) => {
         const search = movieList.filter(item => item.original_title.toLowerCase().startsWith(searchQuery.toLowerCase()));
         //console.log(search);
 
-
         return search;
     }, [movieList, searchQuery]);
+
+    const filteredSerieTopList = useMemo(() => {
+        if (!searchQuery) {
+            return serieTopList;
+        }
+
+        const search = serieTopList.filter(item => item.original_name.toLowerCase().startsWith(searchQuery.toLowerCase()));
+        // console.log(search);
+
+        return search;
+    }, [serieTopList, searchQuery]);
 
     const filteredSerieList = useMemo(() => {
         if (!searchQuery) {
@@ -65,11 +89,9 @@ const SearchPage = ({ navigation }) => {
         // console.log(item);
 
         return (
-            <Card
+            <VerticalCard
                 image={item.poster_path}
                 title={item.original_title}
-                releaseDate={item.release_date}
-                vote={item.vote_average}
                 onPress={() => navigation.navigate('MovieDetailSearch', { data: item })}
             />
         );
@@ -79,11 +101,9 @@ const SearchPage = ({ navigation }) => {
         // console.log(item);
 
         return (
-            <Card
+            <VerticalCard
                 image={item.poster_path}
                 title={item.original_name}
-                releaseDate={item.first_air_date}
-                vote={item.vote_average}
                 onPress={() => navigation.navigate('SerieDetailSearch', { data: item })}
             />
         );
@@ -102,18 +122,38 @@ const SearchPage = ({ navigation }) => {
                         value={searchQuery}
                     />
                 </View>
-                <Text style={styles.title} > Film </Text>
+                <ScrollView
+                contentContainerStyle={styles.scroll}
+                scrollEnabled={true}
+                showsVerticalScrollIndicator={false}  >
+                <Text style={styles.title} > Top Film </Text>
+                <FlatList
+                    horizontal={true}
+                    data={filteredMovieTopList}
+                    renderItem={renderItemMovie}
+                />
+                <Text style={styles.title} > Popular Film </Text>
                 <FlatList
                     horizontal={true}
                     data={filteredMovieList}
                     renderItem={renderItemMovie}
                 />
-                <Text style={styles.title} > Serie TV </Text>
+                <Text style={styles.title} > Top Serie TV </Text>
+                <FlatList
+                    horizontal={true}
+                    data={filteredSerieTopList}
+                    renderItem={renderItemSerie}
+                />
+                 <Text style={styles.title} > Popular Serie TV </Text>
                 <FlatList
                     horizontal={true}
                     data={filteredSerieList}
                     renderItem={renderItemSerie}
                 />
+                <View style = {styles.bottomContainer}>
+
+                </View>
+                </ScrollView>
             </SafeAreaView>
         </View>
     );
@@ -134,8 +174,14 @@ const styles = StyleSheet.create({
         color: 'white',
         fontWeight: 'bold',
         marginTop : 20,
+        marginLeft : 10,
+    },
+    scroll: {
+        flexGrow: 1,
+    },
+    bottomContainer : {
+        marginBottom : 80,
     }
-
 });
 
 export default SearchPage;
