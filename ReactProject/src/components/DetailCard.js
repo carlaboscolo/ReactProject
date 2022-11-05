@@ -20,10 +20,8 @@ const DetailCard = memo(({ image, title, releaseDate, vote, description }) => {
                 {/* testo  */}
                 <View style={styles.containerText}>
                     <View style={{ flex: 1 }}>
-
                         <View style={styles.infoContainer}>
                             <View style={styles.dateContainer}>
-
                                 <Text style={styles.date}> {releaseDate} </Text>
                             </View>
                             <View style={[styles.voteContainer, {
@@ -66,6 +64,7 @@ const styles = StyleSheet.create({
     },
     containerImage: {
         flex: 1,
+        height: 380,
     },
     image: {
         width: '100%',

@@ -20,7 +20,7 @@ const SeriePage = ({ navigation }) => {
                 title={item.original_name}
                 releaseDate={item.first_air_date}
                 vote={item.vote_average}
-                onPress={() => navigation.navigate('SerieDetail', { data: item })}
+                onPress={() => navigation.navigate('SerieDetail', { data: item, id : item.id })}
             />
         );
     }, []);

@@ -18,6 +18,4 @@ const MovieDetail = ({ route, navigation }) => {
     );
 };
 
-
-
 export default MovieDetail;

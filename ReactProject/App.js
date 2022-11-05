@@ -1,14 +1,13 @@
 import React from "react";
-import {NavigationContainer} from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 
 //navigation
 import BottomStack from "./src/navigation/BottomStack";
 
-
 const App = () => {
-  return(
+  return (
     <NavigationContainer>
-        <BottomStack/>
+      <BottomStack />
     </NavigationContainer>
   );
 };
