@@ -16,7 +16,6 @@ const getMovieTopRated = async () => {
     return data.results;
 }
 
-
 const useMovieList = () => {
 
     const [movieList, setMovieList] = useState([]);
@@ -32,6 +31,5 @@ const useMovieList = () => {
         movieTopList,
     }
 };
-
 
 export default useMovieList;

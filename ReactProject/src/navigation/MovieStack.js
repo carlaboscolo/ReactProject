@@ -24,7 +24,6 @@ const MovieStack = () => {
           },
         }}
       />
-
       <Stack.Screen
         name="MovieDetail"
         component={MovieDetail}

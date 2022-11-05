@@ -31,7 +31,7 @@ const Card = memo(({ image, title, releaseDate, vote, onPress }) => {
 const styles = StyleSheet.create({
     rowContainer: {
         height: 390,
-        padding: 26,
+        padding: 16,
     },
     innerContainer: {
         borderRadius: 10,

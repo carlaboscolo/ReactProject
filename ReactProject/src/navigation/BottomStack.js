@@ -21,7 +21,6 @@ const BottomStack = () => {
                     backgroundColor: '#000',
                 },
             }}>
-
             <Tab.Screen
                 options={{
                     headerShown: false,
@@ -32,7 +31,6 @@ const BottomStack = () => {
                 name="Serie"
                 component={SerieStack}
             />
-
             <Tab.Screen
                 options={{
                     headerShown: false,
@@ -43,7 +41,6 @@ const BottomStack = () => {
                 name="Film"
                 component={MovieStack}
             />
-
             <Tab.Screen
                 options={{
                     headerShown: false,
@@ -54,7 +51,6 @@ const BottomStack = () => {
                 name="Cerca"
                 component={SearchStack}
             />
-
             <Tab.Screen
                 options={{
                     headerShown: false,
@@ -65,9 +61,6 @@ const BottomStack = () => {
                 name="Profilo"
                 component={UserStack}
             />
-
-
-
         </Tab.Navigator>
     );
 };

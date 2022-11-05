@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 
-
 const API_KEY = "a7c4848fcfb89f8bef0757f282d0a463";
 
 const getEpisode = async (id) => {
@@ -9,7 +8,6 @@ const getEpisode = async (id) => {
     return data.episodes;
 }
 
-
 const useEpisodeSerieList = (id) => {
 
     const [episodeList, setEpisodeList] = useState([]);
@@ -17,7 +15,6 @@ const useEpisodeSerieList = (id) => {
     useEffect(() => {
         getEpisode(id).then(setEpisodeList);
     }, []);
-
 
     return {
         episodeList,

@@ -3,7 +3,7 @@ import { View, StyleSheet, Text, Image, TouchableOpacity } from "react-native";
 
 const VerticalCard = memo(({ image, title, onPress }) => {
 
- const imageUrl = "https://image.tmdb.org/t/p/w500/" + image;
+    const imageUrl = "https://image.tmdb.org/t/p/w500/" + image;
 
     return (
         <TouchableOpacity onPress={onPress}>
@@ -17,13 +17,11 @@ const VerticalCard = memo(({ image, title, onPress }) => {
                     <View style={styles.containerText}>
                         <View style={{ flex: 1 }}>
                             <Text style={styles.title}>{title} </Text>
-
                         </View>
                     </View>
                 </View>
             </View>
         </TouchableOpacity>
-
     );
 });
 
