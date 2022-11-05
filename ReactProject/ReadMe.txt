@@ -10,3 +10,6 @@ https://developers.themoviedb.org/3/movies/get-movie-details -> movie api
 come utilizzarlo :
 registrarsi su : https://www.themoviedb.org
 andare su profilo/impostazioni/Api -> prendere Api Key
+
+#search bar
+npm i react-native-paper
