@@ -18,7 +18,7 @@ const useSerieList = () => {
 
     const [serieList, setSerieList] = useState([]);
     const [serieTopList, setSerieTopList] = useState([]);
-   
+
     useEffect(() => {
         getSeriePopular().then(setSerieList);
         getSerieTopRated().then(setSerieTopList);

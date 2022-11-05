@@ -31,7 +31,7 @@ const SearchStack = () => {
           },
         }}
       />
-       <Stack.Screen
+      <Stack.Screen
         name="SerieDetailSearch"
         component={SerieDetail}
         options={{

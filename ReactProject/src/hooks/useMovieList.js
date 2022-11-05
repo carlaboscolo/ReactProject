@@ -21,7 +21,7 @@ const useMovieList = () => {
 
     const [movieList, setMovieList] = useState([]);
     const [movieTopList, setMovieTopList] = useState([]);
-    
+
     useEffect(() => {
         getMoviePopular().then(setMovieList);
         getMovieTopRated().then(setMovieTopList);

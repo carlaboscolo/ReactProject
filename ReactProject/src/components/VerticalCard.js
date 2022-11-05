@@ -3,7 +3,7 @@ import { View, StyleSheet, Text, Image, TouchableOpacity } from "react-native";
 
 const VerticalCard = memo(({ image, title, onPress }) => {
 
-    const imageUrl = "https://image.tmdb.org/t/p/w500/" + image;
+ const imageUrl = "https://image.tmdb.org/t/p/w500/" + image;
 
     return (
         <TouchableOpacity onPress={onPress}>
@@ -17,7 +17,7 @@ const VerticalCard = memo(({ image, title, onPress }) => {
                     <View style={styles.containerText}>
                         <View style={{ flex: 1 }}>
                             <Text style={styles.title}>{title} </Text>
-                            
+
                         </View>
                     </View>
                 </View>
@@ -30,7 +30,7 @@ const VerticalCard = memo(({ image, title, onPress }) => {
 const styles = StyleSheet.create({
     rowContainer: {
         height: 300,
-        width : 180,
+        width: 180,
         padding: 10,
     },
     innerContainer: {
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     containerText: {
         flexDirection: 'row',
         padding: 10,
-        height : 60,
+        height: 60,
     },
     title: {
         fontSize: 16,
