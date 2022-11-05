@@ -51,7 +51,7 @@ const BottomStack = () => {
                         <Icon name="search" size={26} color={color} />
                     ),
                 }}
-                name="Search"
+                name="Cerca"
                 component={SearchStack}
             />
 
@@ -62,7 +62,7 @@ const BottomStack = () => {
                         <Icon name="user" size={26} color={color} />
                     ),
                 }}
-                name="User"
+                name="Profilo"
                 component={UserStack}
             />
 

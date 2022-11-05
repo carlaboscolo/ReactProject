@@ -1,9 +1,9 @@
 import React, { memo } from "react";
 import { View, StyleSheet, Text, Image, TouchableOpacity } from "react-native";
 
-const Card = memo(({ image, title, releaseDate, vote, onPress }) => {
+const VerticalCard = memo(({ image, title, onPress }) => {
 
-    const imageUrl = "https://image.tmdb.org/t/p/w500/" + image;
+ const imageUrl = "https://image.tmdb.org/t/p/w500/" + image;
 
     return (
         <TouchableOpacity onPress={onPress}>
@@ -17,8 +17,7 @@ const Card = memo(({ image, title, releaseDate, vote, onPress }) => {
                     <View style={styles.containerText}>
                         <View style={{ flex: 1 }}>
                             <Text style={styles.title}>{title} </Text>
-                            <Text style={styles.date}>Data di uscita : {releaseDate} </Text>
-                            <Text style={styles.vote}>Voto : {vote} </Text>
+
                         </View>
                     </View>
                 </View>
@@ -30,8 +29,9 @@ const Card = memo(({ image, title, releaseDate, vote, onPress }) => {
 
 const styles = StyleSheet.create({
     rowContainer: {
-        height: 390,
-        padding: 26,
+        height: 300,
+        width: 180,
+        padding: 10,
     },
     innerContainer: {
         borderRadius: 10,
@@ -54,20 +54,19 @@ const styles = StyleSheet.create({
     },
     image: {
         width: '100%',
-        height: '150%',
+        height: '100%',
         resizeMode: 'cover',
     },
     containerText: {
         flexDirection: 'row',
         padding: 10,
+        height: 60,
     },
     title: {
-        fontSize: 18,
+        fontSize: 16,
         fontWeight: '800',
     },
-    date: { fontSize: 16 },
-    vote: { fontSize: 14 },
 });
 
 
-export default Card;
+export default VerticalCard;
