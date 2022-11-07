@@ -9,17 +9,7 @@ import useSerieList from "../hooks/useSerieList";
 
 const SeriePage = ({ navigation }) => {
 
-    const { serieList } = useSerieList();
-
-    useEffect(() => {
-        console.log(serieList);
-    }, [serieList]);
-
-    const tappedHeart = useCallback((index) => {
-        let newArr = [...serieList];
-        newArr[index].selected = !newArr[index].selected;
-        setData(newArr);
-    }, [serieList]);
+    const { serieList, tappedHeart } = useSerieList();
 
     const renderItem = useCallback(({ item, index }) => {
         //console.log(item);
@@ -31,6 +21,8 @@ const SeriePage = ({ navigation }) => {
                 releaseDate={item.first_air_date}
                 vote={item.vote_average}
                 onPress={() => navigation.navigate('SerieDetail', { data: item, id: item.id })}
+                onTapHeart={() => tappedHeart(index)}
+                selected={item.selected}
             />
         );
     }, [serieList]);

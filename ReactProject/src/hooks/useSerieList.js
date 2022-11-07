@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 
 const API_KEY = "a7c4848fcfb89f8bef0757f282d0a463";
 
@@ -24,9 +24,21 @@ const useSerieList = () => {
         getSerieTopRated().then(setSerieTopList);
     }, []);
 
+    useEffect(() => {
+        // console.log(serieList);
+     }, [serieList]);
+ 
+     const tappedHeart = useCallback((index) => {
+         let newArr = [...serieList];
+         newArr[index].selected = !newArr[index].selected;
+         console.log( newArr[index].selected);
+         setSerieList(newArr);
+     }, [serieList]);
+
     return {
         serieList,
         serieTopList,
+        tappedHeart
     }
 };
 

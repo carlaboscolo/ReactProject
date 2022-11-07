@@ -1,7 +1,8 @@
 import React, { memo } from "react";
 import { View, StyleSheet, Text, Image, TouchableOpacity } from "react-native";
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
-const Card = memo(({ image, title, releaseDate, vote, onPress }) => {
+const Card = memo(({ image, title, releaseDate, vote, onPress, onTapHeart, selected }) => {
 
     const imageUrl = "https://image.tmdb.org/t/p/w500/" + image;
 
@@ -20,6 +21,9 @@ const Card = memo(({ image, title, releaseDate, vote, onPress }) => {
                             <Text style={styles.date}>Data di uscita : {releaseDate} </Text>
                             <Text style={styles.vote}>Voto : {vote} </Text>
                         </View>
+                        <TouchableOpacity onPress={onTapHeart}>
+                            <Icon name="heart" solid={selected ? true : false} size={26} color='red' />
+                        </TouchableOpacity>
                     </View>
                 </View>
             </View>
