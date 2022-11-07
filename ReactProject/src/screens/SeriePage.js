@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import { View, StyleSheet, FlatList } from "react-native";
 
 //component
@@ -11,8 +11,18 @@ const SeriePage = ({ navigation }) => {
 
     const { serieList } = useSerieList();
 
-    const renderItem = useCallback(({ item }) => {
-        // console.log(item);
+    useEffect(() => {
+        console.log(serieList);
+    }, [serieList]);
+
+    const tappedHeart = useCallback((index) => {
+        let newArr = [...serieList];
+        newArr[index].selected = !newArr[index].selected;
+        setData(newArr);
+    }, [serieList]);
+
+    const renderItem = useCallback(({ item, index }) => {
+        //console.log(item);
 
         return (
             <Card
@@ -23,13 +33,14 @@ const SeriePage = ({ navigation }) => {
                 onPress={() => navigation.navigate('SerieDetail', { data: item, id: item.id })}
             />
         );
-    }, []);
+    }, [serieList]);
 
     return (
         <View style={styles.container}>
             <FlatList
                 data={serieList}
                 renderItem={renderItem}
+                extraData={(item) => item.selected}
             />
         </View>
     );
