@@ -26,25 +26,35 @@ const useSerieList = () => {
     }, []);
 
     useEffect(() => {
-        // console.log(serieList);
+       // console.log(serieList);
      }, [serieList]);
 
-     useEffect(() => {
-        setIsFavorite(serieList);
-        console.log(isFavorite);
-     }, []);
+     //useEffect(() => {
+        //setIsFavorite([serieList]);
+        // console.log(isFavorite);
+      // }, [serieList]);
+
+      useEffect(() => {
+        //console.log(isFavorite);
+      }, [serieList, isFavorite]);
  
      const tappedHeart = useCallback((index) => {
+
          let newArr = [...serieList];
          newArr[index].selected = !newArr[index].selected;
-         //console.log( newArr[index].selected);
+         //console.log(newArr[index].selected);
          setSerieList(newArr);
-     }, [serieList]);
+
+         setIsFavorite(...newArr, selected = true);
+         //console.log(isFavorite);
+
+     }, [serieList, isFavorite]);
 
     return {
         serieList,
         serieTopList,
         tappedHeart,
+        isFavorite,
     }
 };
 
