@@ -26,7 +26,7 @@ const UserStack = () => {
         }}
       />
        <Stack.Screen
-        name="MovieDetailSearch"
+        name="MovieDetailUser"
         component={MovieDetail}
         options={{
           title: 'Dettaglio film',
@@ -40,7 +40,7 @@ const UserStack = () => {
         }}
       />
       <Stack.Screen
-        name="SerieDetailSearch"
+        name="SerieDetailUser"
         component={SerieDetail}
         options={{
           title: 'Dettaglio Serie',

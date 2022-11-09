@@ -10,7 +10,7 @@ export const useFavoritesMovie = () => {
     }, []);
 
     useEffect(() => {
-       getFavoritesMovie();
+         getFavoritesMovie();
     }, [getFavoritesMovie]);
 
     const saveFavorites = useCallback(async (storageKey, movie) => {
