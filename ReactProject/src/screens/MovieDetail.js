@@ -4,13 +4,13 @@ import React from "react";
 import DetailCard from "../components/DetailCard";
 
 //hooks
-import { useFavorites } from "../hooks/useFavorites";
+import { useFavoritesMovie } from "../hooks/useFavoritesMovie";
 
 const MovieDetail = ({ route, navigation }) => {
 
     const { data } = route.params;
 
-    const { addFavorite, isFavorite } = useFavorites();
+    const { addFavoriteMovie, isFavoriteMovie } = useFavoritesMovie();
 
     return (
         <DetailCard
@@ -19,8 +19,8 @@ const MovieDetail = ({ route, navigation }) => {
             releaseDate={data.release_date}
             vote={data.vote_average}
             description={data.overview}
-            onTapHeart={() => addFavorite(data)}
-            selected={isFavorite(data.id)}
+            onTapHeart={() => addFavoriteMovie(data)}
+            selected={isFavoriteMovie(data.id)}
         />
     );
 };
