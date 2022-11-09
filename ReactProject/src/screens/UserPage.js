@@ -35,7 +35,14 @@ const UserPage = () => {
                 contentContainerStyle={styles.scroll}
                 scrollEnabled={true}
                 showsVerticalScrollIndicator={false}  >
-                <Text style={styles.title} > Top Serie TV </Text>
+                <Text style={styles.title} > I tuoi preferiti </Text>
+                <Text style={styles.title} > Serie tv </Text>
+                <FlatList
+                    horizontal={true}
+                    data={favorites}
+                    renderItem={renderItemFavorite}
+                />
+                <Text style={styles.title} > Film </Text>
                 <FlatList
                     horizontal={true}
                     data={favorites}

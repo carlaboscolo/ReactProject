@@ -28,7 +28,7 @@ const SeriePage = ({ navigation }) => {
                 selected={isFavorite(item.id)}
             />
         );
-    }, [serieList, isFavorite, addFavorite]);
+    }, [isFavorite, addFavorite]);
 
     return (
         <View style={styles.container}>

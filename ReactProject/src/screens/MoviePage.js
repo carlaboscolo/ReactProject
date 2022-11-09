@@ -6,10 +6,14 @@ import Card from "../components/Card";
 
 //hooks
 import useMovieList from "../hooks/useMovieList";
+import { useFavorites } from "../hooks/useFavorites";
 
 const MoviePage = ({ navigation }) => {
 
     const { movieList } = useMovieList();
+
+    const { addFavorite, isFavorite } = useFavorites();
+
 
     const renderItem = useCallback(({ item }) => {
         // console.log(item);
@@ -21,9 +25,11 @@ const MoviePage = ({ navigation }) => {
                 releaseDate={item.release_date}
                 vote={item.vote_average}
                 onPress={() => navigation.navigate('MovieDetail', { data: item })}
-            />
+                onTapHeart={() => addFavorite(item)}
+                selected={isFavorite(item.id)}
+                />
         );
-    }, []);
+    }, [isFavorite, addFavorite]);
 
     return (
         <View style={styles.container}>

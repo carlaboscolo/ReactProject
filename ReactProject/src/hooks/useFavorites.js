@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from "react"
 
 export const useFavorites = () => {
     const [favorites, setFavorites] = useState([]);
+    const [movieFavorites, setMovieFavorites] = useState([]);
 
     const getFavorites = useCallback(async () => {
         const favorites = await AsyncStorage.getItem('favorites') ?? '[]';
@@ -25,7 +26,9 @@ export const useFavorites = () => {
             return;
         }
         await AsyncStorage.setItem(storageKey, JSON.stringify([...favorites, serie]));
+
         setFavorites(prev => ([...prev, serie]));
+       
     })
 
     const addFavorite  = useCallback(async (serie) => {
