@@ -14,7 +14,6 @@ const MoviePage = ({ navigation }) => {
 
     const { addFavorite, isFavorite } = useFavorites();
 
-
     const renderItem = useCallback(({ item }) => {
         // console.log(item);
 
