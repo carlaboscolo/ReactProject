@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import { View, Text, StyleSheet, ScrollView, FlatList } from "react-native";
 
 //component
@@ -8,25 +8,28 @@ import VerticalCard from "../components/VerticalCard";
 import useSerieList from "../hooks/useSerieList";
 
 const UserPage = () => {
-    const { serieList } = useSerieList();
+    const { serieList, isFavorite } = useSerieList();
+
+    useEffect(() => {
+        //console.log(isFavorite);
+      }, [isFavorite]);
 
     const renderItemFavorite =  useCallback(({ item }) => {
-         
-        if (item.selected === true) {
-            console.log("SELEZIONATO " , item.selected, item.original_name);
+       console.log("PREFERITI");
+
+        //if (item.selected === true) {
+        //   console.log("SELEZIONATO " , item.selected, item.original_name);
       
-           return (
+     /*    return (
                 <VerticalCard
                     image={item.poster_path}
                     title={item.original_name}
                     onPress={() => navigation.navigate('SerieDetailSearch', { data: item, id: item.id })}
                 />
-            );
-        }else{
+            ); 
+            */ 
 
-        }
-
-    }, [serieList]);
+    }, [isFavorite]);
 
     return (
         <View style={styles.container}>
@@ -37,7 +40,7 @@ const UserPage = () => {
                 <Text style={styles.title} > Top Serie TV </Text>
                 <FlatList
                     horizontal={true}
-                    data={serieList}
+                    data={isFavorite}
                     renderItem={renderItemFavorite}
                 />
                 <View style={styles.bottomContainer} />

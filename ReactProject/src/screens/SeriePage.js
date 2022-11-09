@@ -21,7 +21,7 @@ const SeriePage = ({ navigation }) => {
                 releaseDate={item.first_air_date}
                 vote={item.vote_average}
                 onPress={() => navigation.navigate('SerieDetail', { data: item, id: item.id })}
-                onTapHeart={() => tappedHeart(index)}
+                onTapHeart={() => tappedHeart(item, index)}
                 selected={item.selected}
             />
         );
