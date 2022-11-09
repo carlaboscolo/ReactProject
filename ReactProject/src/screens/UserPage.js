@@ -31,11 +31,12 @@ const UserPage = () => {
 
     return (
         <View style={styles.container}>
-            <ScrollView
+           <Text style={styles.title} > I tuoi preferiti </Text>  
+           <ScrollView
                 contentContainerStyle={styles.scroll}
                 scrollEnabled={true}
                 showsVerticalScrollIndicator={false}  >
-                <Text style={styles.title} > I tuoi preferiti </Text>
+               
                 <Text style={styles.title} > Serie tv </Text>
                 <FlatList
                     horizontal={true}
