@@ -8,7 +8,7 @@ import VerticalCard from "../components/VerticalCard";
 import useSerieList from "../hooks/useSerieList";
 
 const UserPage = () => {
-    const { serieList, isFavorite } = useSerieList();
+    const { serieList } = useSerieList();
 
     const renderItemFavorite =  useCallback(({ item }) => {
          
@@ -26,7 +26,7 @@ const UserPage = () => {
 
         }
 
-    }, [isFavorite]);
+    }, [serieList]);
 
     return (
         <View style={styles.container}>
@@ -37,7 +37,7 @@ const UserPage = () => {
                 <Text style={styles.title} > Top Serie TV </Text>
                 <FlatList
                     horizontal={true}
-                    data={isFavorite}
+                    data={serieList}
                     renderItem={renderItemFavorite}
                 />
                 <View style={styles.bottomContainer} />

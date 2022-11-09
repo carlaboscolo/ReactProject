@@ -18,7 +18,7 @@ const useSerieList = () => {
 
     const [serieList, setSerieList] = useState([]);
     const [serieTopList, setSerieTopList] = useState([]);
-    const [isFavorite, setIsFavorite] = useState();
+  //  const [isFavorite, setIsFavorite] = useState();
 
     useEffect(() => {
         getSeriePopular().then(setSerieList);
@@ -34,9 +34,9 @@ const useSerieList = () => {
         // console.log(isFavorite);
       // }, [serieList]);
 
-      useEffect(() => {
+    /*  useEffect(() => {
         //console.log(isFavorite);
-      }, [serieList, isFavorite]);
+      }, [serieList, isFavorite]); */
  
      const tappedHeart = useCallback((index) => {
 
@@ -45,16 +45,16 @@ const useSerieList = () => {
          //console.log(newArr[index].selected);
          setSerieList(newArr);
 
-         setIsFavorite(...newArr, selected = true);
+        // setIsFavorite(...newArr, selected = true);
          //console.log(isFavorite);
 
-     }, [serieList, isFavorite]);
+     }, [serieList]);
 
     return {
         serieList,
         serieTopList,
         tappedHeart,
-        isFavorite,
+       // isFavorite,
     }
 };
 
