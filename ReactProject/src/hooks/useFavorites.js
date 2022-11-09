@@ -3,7 +3,6 @@ import { useCallback, useEffect, useState } from "react"
 
 export const useFavorites = () => {
     const [favorites, setFavorites] = useState([]);
-    const [movieFavorites, setMovieFavorites] = useState([]);
 
     const getFavorites = useCallback(async () => {
         const favorites = await AsyncStorage.getItem('favorites') ?? '[]';
@@ -34,6 +33,8 @@ export const useFavorites = () => {
     const addFavorite  = useCallback(async (serie) => {
        saveFavorites('favorites', serie);
     }, [favorites]);
+
+
 
     const isFavorite = useCallback((id) => favorites.findIndex(fav => fav.id === id) !== -1, [favorites]);
 
