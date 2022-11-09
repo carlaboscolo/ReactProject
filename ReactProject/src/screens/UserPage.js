@@ -1,35 +1,33 @@
 import React, { useCallback, useEffect } from "react";
 import { View, Text, StyleSheet, ScrollView, FlatList } from "react-native";
+import { useFocusEffect } from '@react-navigation/native';
 
 //component
 import VerticalCard from "../components/VerticalCard";
+import { useFavorites } from "../hooks/useFavorites";
 
 //hooks
 import useSerieList from "../hooks/useSerieList";
 
 const UserPage = () => {
-    const { serieList, isFavorite } = useSerieList();
+    const { favorites, getFavorites } = useFavorites();
 
-    useEffect(() => {
-        //console.log(isFavorite);
-      }, [isFavorite]);
+    useFocusEffect(() => {
+        getFavorites();
+    });
+    
 
     const renderItemFavorite =  useCallback(({ item }) => {
-       console.log("PREFERITI");
-
-        //if (item.selected === true) {
-        //   console.log("SELEZIONATO " , item.selected, item.original_name);
-      
-     /*    return (
+     
+       return (
                 <VerticalCard
                     image={item.poster_path}
                     title={item.original_name}
-                    onPress={() => navigation.navigate('SerieDetailSearch', { data: item, id: item.id })}
+                   // onPress={() => navigation.navigate('SerieDetailSearch', { data: item, id: item.id })}
                 />
-            ); 
-            */ 
+            );     
 
-    }, [isFavorite]);
+    }, []);
 
     return (
         <View style={styles.container}>
@@ -40,7 +38,7 @@ const UserPage = () => {
                 <Text style={styles.title} > Top Serie TV </Text>
                 <FlatList
                     horizontal={true}
-                    data={isFavorite}
+                    data={favorites}
                     renderItem={renderItemFavorite}
                 />
                 <View style={styles.bottomContainer} />

@@ -3,13 +3,16 @@ import { View, StyleSheet, FlatList } from "react-native";
 
 //component
 import Card from "../components/Card";
+import { useFavorites } from "../hooks/useFavorites";
 
 //hooks
 import useSerieList from "../hooks/useSerieList";
 
 const SeriePage = ({ navigation }) => {
 
-    const { serieList, tappedHeart } = useSerieList();
+    const { serieList } = useSerieList();
+
+    const { addFavorite, isFavorite } = useFavorites();
 
     const renderItem = useCallback(({ item, index }) => {
         //console.log(item);
@@ -21,11 +24,11 @@ const SeriePage = ({ navigation }) => {
                 releaseDate={item.first_air_date}
                 vote={item.vote_average}
                 onPress={() => navigation.navigate('SerieDetail', { data: item, id: item.id })}
-                onTapHeart={() => tappedHeart(item, index)}
-                selected={item.selected}
+                onTapHeart={() => addFavorite(item)}
+                selected={isFavorite(item.id)}
             />
         );
-    }, [serieList]);
+    }, [serieList, isFavorite, addFavorite]);
 
     return (
         <View style={styles.container}>
