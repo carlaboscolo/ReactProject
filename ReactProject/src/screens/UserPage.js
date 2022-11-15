@@ -9,6 +9,10 @@ import VerticalCard from "../components/VerticalCard";
 import { useFavoritesMovie } from "../hooks/useFavoritesMovie";
 import { useFavorites } from "../hooks/useFavorites";
 
+//animation
+import Animated from "react-native-reanimated";
+import { rowLayoutAnimation } from "../animation/entering/rowLayoutAnimations";
+
 const UserPage = ({ navigation }) => {
     const { favorites, getFavorites } = useFavorites();
    // const { favoritesMovie, getFavoritesMovie } = useFavoritesMovie();
@@ -25,11 +29,14 @@ const UserPage = ({ navigation }) => {
     const renderItemFavorite = useCallback(({ item }) => {
 
         return (
+            <Animated.View
+            entering={rowLayoutAnimation} > 
             <VerticalCard
                 image={item.poster_path}
                 title={item.original_name}
                 onPress={() => navigation.navigate('SerieDetailUser', { data: item, id: item.id })}
             />
+             </Animated.View>
         );
 
     }, []);
@@ -37,11 +44,14 @@ const UserPage = ({ navigation }) => {
    /* const renderMovieFavorite = useCallback(({ item }) => {
 
         return (
+             <Animated.View
+            entering={rowLayoutAnimation} > 
             <VerticalCard
                 image={item.poster_path}
                 title={item.original_title}
                 onPress={() => navigation.navigate('MovieDetailUser', { data: item, id: item.id })}
             />
+             </Animated.View>
         );
 
     }, []); */
@@ -55,7 +65,7 @@ const UserPage = ({ navigation }) => {
                 scrollEnabled={true}
                 showsVerticalScrollIndicator={false}  >
                 <Text style={styles.title} > Serie tv </Text>
-                <FlatList
+                <Animated.FlatList
                     horizontal={true}
                     data={favorites}
                     renderItem={renderItemFavorite}
@@ -69,7 +79,7 @@ const UserPage = ({ navigation }) => {
 };
 
 /*
-                <FlatList
+                <Animated.FlatList
                     horizontal={true}
                     data={favoritesMovie}
                     renderItem={renderMovieFavorite}
