@@ -5,7 +5,6 @@ import { useFocusEffect } from '@react-navigation/native';
 //component
 import VerticalCard from "../components/VerticalCard";
 
-
 //hooks
 import { useFavoritesMovie } from "../hooks/useFavoritesMovie";
 import { useFavorites } from "../hooks/useFavorites";

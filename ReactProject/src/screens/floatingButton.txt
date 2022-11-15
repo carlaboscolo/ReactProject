@@ -1,0 +1,115 @@
+import React from "react";
+import { StyleSheet, View, Text, Animated, TouchableWithoutFeedback } from "react-native";
+import Icon from 'react-native-vector-icons/FontAwesome5';
+
+const UserPage = () => {
+    animation = new Animated.Value(0);
+    let open = false;
+
+    const toggleMenu = () => {
+        const toValue = open ? false : true;
+        Animated.spring(animation, { toValue, friction: 5, useNativeDriver: true, }).start();
+        open = !open;
+    };
+
+
+    const filmStyle = {
+        transform: [
+            { scale: animation },
+            {
+                translateY: animation.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [0, -80],
+                })
+            }
+        ],
+    };
+
+    const serieStyle = {
+        transform: [
+            { scale: animation },
+            {
+                translateY: animation.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [0, -140],
+                })
+            }
+        ],
+    };
+
+    const rotation = {
+        transform: [
+            {
+                rotate: animation.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: ["0deg", "45deg"]
+                })
+            }
+        ],
+    };
+
+
+
+    return (
+        <View style={styles.container}>
+            <View style={styles.containerBtn}>
+
+                <TouchableWithoutFeedback>
+                    <Animated.View style={[styles.button, styles.secondary, serieStyle]}>
+                        <Icon name="tv" size={20} color='#F02A4B' />
+                    </Animated.View>
+                </TouchableWithoutFeedback>
+
+                <TouchableWithoutFeedback>
+                    <Animated.View style={[styles.button, styles.secondary, filmStyle]}>
+                        <Icon name="film" size={20} color='#F02A4B' />
+                    </Animated.View>
+                </TouchableWithoutFeedback>
+
+                <TouchableWithoutFeedback onPress={toggleMenu}>
+                    <Animated.View style={[styles.button, styles.menu, rotation]}>
+                        <Icon name="plus" size={24} color='white' />
+                    </Animated.View>
+                </TouchableWithoutFeedback>
+            </View>
+        </View>
+    );
+}
+
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: 'rgb(24,24,24)',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    containerBtn: {
+        alignItems: 'center',
+        position: 'absolute',
+        bottom: 80,
+    },
+    button: {
+        position: 'absolute',
+        width: 60,
+        height: 60,
+        borderRadius: 60 / 2,
+        alignItems: 'center',
+        justifyContent: 'center',
+        shadowRadius: 10,
+        shadowColor: '#F02A4B',
+        shadowOpacity: 0.3,
+        shadowOffset: { height: 10 },
+    },
+    menu: {
+        backgroundColor: '#F02A4B'
+    },
+    secondary: {
+        width: 50,
+        height: 50,
+        borderRadius: 50 / 2,
+        backgroundColor: '#FFF',
+    },
+});
+
+export default UserPage;
