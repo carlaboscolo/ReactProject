@@ -13,3 +13,18 @@ andare su profilo/impostazioni/Api -> prendere Api Key
 
 #search bar
 npm i react-native-paper
+
+#async storage
+npm install @react-native-async-storage/async-storage
+
+#reanimated
+npm i react-native-reanimated
+
+copio ed incollo su babel.config.js
+module.exports = function (api) { 
+api.cache(true);
+ return {
+   presets: ['babel-preset-expo'], 
+   plugins: ['react-native-reanimated/plugin'], 
+ };
+};

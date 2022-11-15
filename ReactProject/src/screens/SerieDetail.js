@@ -7,6 +7,7 @@ import VerticalCard from "../components/VerticalCard";
 
 //hooks
 import useEpisodeSerieList from "../hooks/useEpisodeSerieList";
+import { useFavorites } from "../hooks/useFavorites";
 
 const SerieDetail = ({ route, navigation }) => {
 
@@ -14,6 +15,8 @@ const SerieDetail = ({ route, navigation }) => {
   const { id } = route.params;
   //console.log(id);
   const { episodeList } = useEpisodeSerieList(id);
+
+  const { addFavorite, isFavorite } = useFavorites();
 
   const renderItemSerie = useCallback(({ item }) => {
     // console.log(item); 
@@ -38,6 +41,8 @@ const SerieDetail = ({ route, navigation }) => {
           releaseDate={data.first_air_date}
           vote={data.vote_average}
           description={data.overview}
+          onTapHeart={() => addFavorite(data)}
+          selected={isFavorite(data.id)}
         />
         <Text style={styles.title} > Episode </Text>
         <FlatList

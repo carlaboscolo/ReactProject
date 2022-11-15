@@ -4,13 +4,17 @@ import { FlatList, Image, StyleSheet, Text, View } from 'react-native';
 //component
 import Card from "../components/Card";
 
+
 //hooks
 import useMovieList from "../hooks/useMovieList";
+import { useFavoritesMovie } from "../hooks/useFavoritesMovie";
 
 const MoviePage = ({ navigation }) => {
 
     const { movieList } = useMovieList();
 
+    const { addFavoriteMovie, isFavoriteMovie } = useFavoritesMovie();
+ 
     const renderItem = useCallback(({ item }) => {
         // console.log(item);
 
@@ -21,9 +25,11 @@ const MoviePage = ({ navigation }) => {
                 releaseDate={item.release_date}
                 vote={item.vote_average}
                 onPress={() => navigation.navigate('MovieDetail', { data: item })}
-            />
+                onTapHeart={() => addFavoriteMovie(item)}
+                selected={isFavoriteMovie(item.id)}
+                />
         );
-    }, []);
+    }, [isFavoriteMovie, addFavoriteMovie]);
 
     return (
         <View style={styles.container}>

@@ -1,8 +1,9 @@
-import React, { useCallback } from "react";
-import { View, StyleSheet, FlatList } from "react-native";
+import React, { useCallback, useEffect } from "react";
+import { View, StyleSheet, FlatList, ViewToken } from "react-native";
 
 //component
 import Card from "../components/Card";
+import { useFavorites } from "../hooks/useFavorites";
 
 //hooks
 import useSerieList from "../hooks/useSerieList";
@@ -11,8 +12,10 @@ const SeriePage = ({ navigation }) => {
 
     const { serieList } = useSerieList();
 
-    const renderItem = useCallback(({ item }) => {
-        // console.log(item);
+    const { addFavorite, isFavorite } = useFavorites();
+
+    const renderItem = useCallback(({ item, index }) => {
+        //console.log(item);
 
         return (
             <Card
@@ -21,9 +24,11 @@ const SeriePage = ({ navigation }) => {
                 releaseDate={item.first_air_date}
                 vote={item.vote_average}
                 onPress={() => navigation.navigate('SerieDetail', { data: item, id: item.id })}
-            />
+                onTapHeart={() => addFavorite(item)}
+                selected={isFavorite(item.id)}
+             />
         );
-    }, []);
+    }, [isFavorite, addFavorite]);
 
     return (
         <View style={styles.container}>

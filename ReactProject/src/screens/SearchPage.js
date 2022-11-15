@@ -21,28 +21,27 @@ const SearchPage = ({ navigation }) => {
     };
 
     //movie top rated
-    const filteredMovieTopList = useMemo(() => {
+     const filteredMovieTopList = useMemo(() => {
         if (!searchQuery) {
             return movieTopList;
         }
 
-        const search = movieTopList.filter(item => item.original_title.toLowerCase().startsWith(searchQuery.toLowerCase()));
-        //console.log(search);
+        const search =  movieTopList.filter(item => item.original_title.toLowerCase().startsWith(searchQuery.toLowerCase()));
 
         return search;
-    }, [movieTopList, searchQuery]);
+    }, [movieTopList, searchQuery]); 
 
     //movie popular
-    const filteredMovieList = useMemo(() => {
+    const filteredMovieList = useMemo((key) => {
         if (!searchQuery) {
-            return movieList;
+           return movieList;
         }
 
         const search = movieList.filter(item => item.original_title.toLowerCase().startsWith(searchQuery.toLowerCase()));
         //console.log(search);
 
         return search;
-    }, [movieList, searchQuery]);
+    }, [searchQuery, movieList, movieTopList]); 
 
     //serie top rated
     const filteredSerieTopList = useMemo(() => {
