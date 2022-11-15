@@ -15,16 +15,12 @@ import { rowLayoutAnimation } from "../animation/entering/rowLayoutAnimations";
 
 const UserPage = ({ navigation }) => {
     const { favorites, getFavorites } = useFavorites();
-   // const { favoritesMovie, getFavoritesMovie } = useFavoritesMovie();
+    const { favoritesMovie, getFavoritesMovie } = useFavoritesMovie();
 
     useFocusEffect(() => {
         getFavorites();
-    });
-
-  /*  useFocusEffect(() => {
         getFavoritesMovie();
     });
-*/
 
     const renderItemFavorite = useCallback(({ item }) => {
 
@@ -41,7 +37,7 @@ const UserPage = ({ navigation }) => {
 
     }, []);
 
-   /* const renderMovieFavorite = useCallback(({ item }) => {
+   const renderMovieFavorite = useCallback(({ item }) => {
 
         return (
              <Animated.View
@@ -54,7 +50,7 @@ const UserPage = ({ navigation }) => {
              </Animated.View>
         );
 
-    }, []); */
+    }, []); 
 
 
     return (
@@ -71,20 +67,16 @@ const UserPage = ({ navigation }) => {
                     renderItem={renderItemFavorite}
                 />
                 <Text style={styles.title} > Film </Text>
-                
-                <View style={styles.bottomContainer} />
-            </ScrollView>
-        </View>
-    );
-};
-
-/*
                 <Animated.FlatList
                     horizontal={true}
                     data={favoritesMovie}
                     renderItem={renderMovieFavorite}
                 />
-*/
+                <View style={styles.bottomContainer} />
+            </ScrollView>
+        </View>
+    );
+};
 
 const styles = StyleSheet.create({
     container: {
