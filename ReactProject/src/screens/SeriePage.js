@@ -1,5 +1,9 @@
 import React, { useCallback, useEffect } from "react";
-import { View, StyleSheet, FlatList, ViewToken } from "react-native";
+import { View, StyleSheet, FlatList } from "react-native";
+
+//animation
+import Animated from "react-native-reanimated";
+import { rowLayoutAnimation } from "../animation/entering/rowLayoutAnimations";
 
 //component
 import Card from "../components/Card";
@@ -18,21 +22,24 @@ const SeriePage = ({ navigation }) => {
         //console.log(item);
 
         return (
-            <Card
-                image={item.poster_path}
-                title={item.original_name}
-                releaseDate={item.first_air_date}
-                vote={item.vote_average}
-                onPress={() => navigation.navigate('SerieDetail', { data: item, id: item.id })}
-                onTapHeart={() => addFavorite(item)}
-                selected={isFavorite(item.id)}
-             />
+            <Animated.View
+                entering={rowLayoutAnimation} >
+                <Card
+                    image={item.poster_path}
+                    title={item.original_name}
+                    releaseDate={item.first_air_date}
+                    vote={item.vote_average}
+                    onPress={() => navigation.navigate('SerieDetail', { data: item, id: item.id })}
+                    onTapHeart={() => addFavorite(item)}
+                    selected={isFavorite(item.id)}
+                />
+            </Animated.View>
         );
     }, [isFavorite, addFavorite]);
 
     return (
         <View style={styles.container}>
-            <FlatList
+            <Animated.FlatList
                 data={serieList}
                 renderItem={renderItem}
             />

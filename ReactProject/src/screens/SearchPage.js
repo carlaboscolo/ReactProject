@@ -9,6 +9,10 @@ import VerticalCard from "../components/VerticalCard";
 import useMovieList from "../hooks/useMovieList";
 import useSerieList from "../hooks/useSerieList";
 
+//animation
+import Animated from "react-native-reanimated";
+import { columnLayoutAnimation } from "../animation/entering/columnLayoutAnimations";
+
 const SearchPage = ({ navigation }) => {
 
     const [searchQuery, setSearchQuery] = useState('');
@@ -71,11 +75,14 @@ const SearchPage = ({ navigation }) => {
         // console.log(item);
 
         return (
+            <Animated.View
+                entering={columnLayoutAnimation} >
             <VerticalCard
                 image={item.poster_path}
                 title={item.original_title}
                 onPress={() => navigation.navigate('MovieDetailSearch', { data: item })}
             />
+            </Animated.View>
         );
     }, []);
 
@@ -83,11 +90,14 @@ const SearchPage = ({ navigation }) => {
         // console.log(item);
 
         return (
+            <Animated.View
+                entering={columnLayoutAnimation} >
             <VerticalCard
                 image={item.poster_path}
                 title={item.original_name}
                 onPress={() => navigation.navigate('SerieDetailSearch', { data: item, id: item.id })}
             />
+            </Animated.View>
         );
     }, []);
 
@@ -106,25 +116,25 @@ const SearchPage = ({ navigation }) => {
                     scrollEnabled={true}
                     showsVerticalScrollIndicator={false}  >
                     <Text style={styles.title} > Top Film </Text>
-                    <FlatList
+                    <Animated.FlatList
                         horizontal={true}
                         data={filteredMovieTopList}
                         renderItem={renderItemMovie}
                     />
                     <Text style={styles.title} > Popular Film </Text>
-                    <FlatList
+                    <Animated.FlatList
                         horizontal={true}
                         data={filteredMovieList}
                         renderItem={renderItemMovie}
                     />
                     <Text style={styles.title} > Top Serie TV </Text>
-                    <FlatList
+                    <Animated.FlatList
                         horizontal={true}
                         data={filteredSerieTopList}
                         renderItem={renderItemSerie}
                     />
                     <Text style={styles.title} > Popular Serie TV </Text>
-                    <FlatList
+                    <Animated.FlatList
                         horizontal={true}
                         data={filteredSerieList}
                         renderItem={renderItemSerie}
