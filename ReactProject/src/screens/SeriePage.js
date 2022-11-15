@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from "react";
-import { View, StyleSheet, FlatList } from "react-native";
+import { View, StyleSheet, FlatList, ViewToken } from "react-native";
 
 //component
 import Card from "../components/Card";
@@ -26,7 +26,7 @@ const SeriePage = ({ navigation }) => {
                 onPress={() => navigation.navigate('SerieDetail', { data: item, id: item.id })}
                 onTapHeart={() => addFavorite(item)}
                 selected={isFavorite(item.id)}
-            />
+             />
         );
     }, [isFavorite, addFavorite]);
 
@@ -35,7 +35,6 @@ const SeriePage = ({ navigation }) => {
             <FlatList
                 data={serieList}
                 renderItem={renderItem}
-                extraData={(item) => item.selected}
             />
         </View>
     );

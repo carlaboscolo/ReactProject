@@ -34,8 +34,6 @@ export const useFavorites = () => {
        saveFavorites('favorites', serie);
     }, [favorites]);
 
-
-
     const isFavorite = useCallback((id) => favorites.findIndex(fav => fav.id === id) !== -1, [favorites]);
 
     return {
