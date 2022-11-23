@@ -5,8 +5,8 @@ export const useFavoritesMovie = () => {
     const [favoritesMovie, setFavoritesMovie] = useState([]);
 
     const getFavoritesMovie = useCallback(async () => {
-        const favoritesMovie = await AsyncStorage.getItem('favoritesMovie') ?? '[]';
-        setFavoritesMovie(JSON.parse(favoritesMovie));
+        const storageFavoritesMovie = await AsyncStorage.getItem('favoritesMovie') ?? '[]';
+        setFavoritesMovie(JSON.parse(storageFavoritesMovie));
     }, []);
 
     useEffect(() => {
@@ -27,11 +27,11 @@ export const useFavoritesMovie = () => {
         await AsyncStorage.setItem(storageKey, JSON.stringify([...favoritesMovie, movie]));
 
         setFavoritesMovie(prev => ([...prev, movie]));  
-    })
+    }, [favoritesMovie]);
 
     const addFavoriteMovie  = useCallback(async (movie) => {
        saveFavorites('favoritesMovie', movie);
-    }, [favoritesMovie]);
+    }, [saveFavorites]);
 
 
 

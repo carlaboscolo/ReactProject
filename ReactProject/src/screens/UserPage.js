@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect } from "react";
 import { View, Text, StyleSheet, ScrollView, FlatList } from "react-native";
-import { useFocusEffect } from '@react-navigation/native';
+import { useFocusEffect, useIsFocused } from '@react-navigation/native';
 
 //component
 import VerticalCard from "../components/VerticalCard";
@@ -17,10 +17,15 @@ const UserPage = ({ navigation }) => {
     const { favorites, getFavorites } = useFavorites();
     const { favoritesMovie, getFavoritesMovie } = useFavoritesMovie();
 
-    useFocusEffect(() => {
+    const isFocused = useIsFocused();
+
+    useEffect(() => {
+        if (!isFocused) {
+            return;
+        }
         getFavorites();
         getFavoritesMovie();
-    });
+    }, [isFocused]);
 
     const renderItemFavorite = useCallback(({ item }) => {
 
