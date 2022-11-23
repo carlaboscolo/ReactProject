@@ -1,83 +1,20 @@
-import React, { useState, useCallback, useEffect, useMemo } from "react";
+import React, { useCallback } from "react";
 import { View, Text, StyleSheet, FlatList, ScrollView, SafeAreaView } from "react-native";
 import { Searchbar } from 'react-native-paper';
 
 //component
 import VerticalCard from "../components/VerticalCard";
 
-//hooks
-import useMovieList from "../hooks/useMovieList";
-import useSerieList from "../hooks/useSerieList";
-
 //animation
 import Animated from "react-native-reanimated";
 import { columnLayoutAnimation } from "../animation/entering/columnLayoutAnimations";
 
+//hooks
+import { useSearch } from "../hooks/useSearch";
+
 const SearchPage = ({ navigation }) => {
 
-    const [searchQuery, setSearchQuery] = useState('');
-    const { movieList, movieTopList } = useMovieList();
-    const { serieList, serieTopList } = useSerieList();
-
-    const onChangeSearch = (query) => {
-        setSearchQuery(query);
-        // console.warn(query);
-    };
-
-    const filteredList = useMemo(() => {
-        if (!searchQuery || searchQuery.length < 3) {
-            return {
-                movieList,
-                movieTopList,
-            }
-        }
-        return {
-            movieTopList: movieTopList.filter(item => item.original_title.toLowerCase().includes(searchQuery.toLowerCase())),
-            movieList: movieList.filter(item => item.original_title.toLowerCase().includes(searchQuery.toLowerCase())),
-        }
-    }, [movieList, movieTopList, searchQuery]);
-
-    
-    const filteredListMovie = useMemo(() => {
-        if (!searchQuery || searchQuery.length < 3) {
-            return {
-                serieList,
-                serieTopList,
-            }
-        }
-
-        return{
-           serieTopList : serieTopList.filter(item => item.original_name.toLowerCase().includes(searchQuery.toLowerCase())),
-           serieList : serieList.filter(item => item.original_name.toLowerCase().includes(searchQuery.toLowerCase())),
-        }
-    }, [serieList, serieTopList, searchQuery]);
-
-
-
-    //serie top rated
-  /*  const filteredSerieTopList = useMemo(() => {
-        if (!searchQuery) {
-            return serieTopList;
-        }
-
-        const search = 
-        // console.log(search);
-
-        return search;
-    }, [serieTopList, searchQuery]);
-
-    //serie popular
-    const filteredSerieList = useMemo(() => {
-        if (!searchQuery) {
-            return serieList;
-        }
-
-        const search = serieList.filter(item => item.original_name.toLowerCase().startsWith(searchQuery.toLowerCase()));
-        // console.log(search);
-
-        return search;
-    }, [serieList, searchQuery]);
-    */
+   const {searchQuery, onChangeSearch, filteredList, filteredListMovie} = useSearch();
 
     const renderItemMovie = useCallback(({ item }) => {
         // console.log(item);

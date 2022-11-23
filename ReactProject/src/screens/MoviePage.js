@@ -13,7 +13,6 @@ import { useFavoritesMovie } from "../hooks/useFavoritesMovie";
 const MoviePage = ({ navigation }) => {
 
     const { movieList } = useMovieList();
-
     const { addFavoriteMovie, isFavoriteMovie } = useFavoritesMovie();
 
     const renderItem = useCallback(({ item }) => {

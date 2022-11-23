@@ -9,13 +9,11 @@ import VerticalCard from "../components/VerticalCard";
 import useEpisodeSerieList from "../hooks/useEpisodeSerieList";
 import { useFavorites } from "../hooks/useFavorites";
 
-const SerieDetail = ({ route, navigation }) => {
+const SerieDetail = ({ route }) => {
 
   const { data } = route.params;
   const { id } = route.params;
-  //console.log(id);
   const { episodeList } = useEpisodeSerieList(id);
-
   const { addFavorite, isFavorite } = useFavorites();
 
   const renderItemSerie = useCallback(({ item }) => {

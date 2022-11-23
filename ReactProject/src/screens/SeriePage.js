@@ -15,7 +15,6 @@ import useSerieList from "../hooks/useSerieList";
 const SeriePage = ({ navigation }) => {
 
     const { serieList } = useSerieList();
-
     const { addFavorite, isFavorite } = useFavorites();
 
     const renderItem = useCallback(({ item, index }) => {

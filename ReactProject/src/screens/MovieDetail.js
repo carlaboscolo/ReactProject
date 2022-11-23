@@ -6,10 +6,9 @@ import DetailCard from "../components/DetailCard";
 //hooks
 import { useFavoritesMovie } from "../hooks/useFavoritesMovie";
 
-const MovieDetail = ({ route, navigation }) => {
+const MovieDetail = ({ route }) => {
 
     const { data } = route.params;
-
     const { addFavoriteMovie, isFavoriteMovie } = useFavoritesMovie();
 
     return (

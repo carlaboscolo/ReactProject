@@ -14,6 +14,7 @@ import Animated from "react-native-reanimated";
 import { rowLayoutAnimation } from "../animation/entering/rowLayoutAnimations";
 
 const UserPage = ({ navigation }) => {
+
     const { favorites, getFavorites } = useFavorites();
     const { favoritesMovie, getFavoritesMovie } = useFavoritesMovie();
 
@@ -39,11 +40,9 @@ const UserPage = ({ navigation }) => {
             />
              </Animated.View>
         );
-
     }, []);
 
    const renderMovieFavorite = useCallback(({ item }) => {
-
         return (
              <Animated.View
             entering={rowLayoutAnimation} > 
@@ -54,7 +53,6 @@ const UserPage = ({ navigation }) => {
             />
              </Animated.View>
         );
-
     }, []); 
 
 

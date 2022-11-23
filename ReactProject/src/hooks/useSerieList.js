@@ -1,5 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useEffect, useState } from "react";
 
 const API_KEY = "a7c4848fcfb89f8bef0757f282d0a463";
 
