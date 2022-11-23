@@ -37,36 +37,30 @@ const SearchPage = ({ navigation }) => {
         }
     }, [movieList, movieTopList, searchQuery]);
 
-    //movie top rated
-     const filteredMovieTopList = useMemo(() => {
-        if (!searchQuery) {
-            return movieTopList;
+    
+    const filteredListMovie = useMemo(() => {
+        if (!searchQuery || searchQuery.length < 3) {
+            return {
+                serieList,
+                serieTopList,
+            }
         }
 
-        const search =  movieTopList.filter(item => item.original_title.toLowerCase().startsWith(searchQuery.toLowerCase()));
-        
-        return search;
-    }, [movieTopList, searchQuery]); 
-
-    //movie popular
-    const filteredMovieList = useMemo((key) => {
-        if (!searchQuery) {
-           return movieList;
+        return{
+           serieTopList : serieTopList.filter(item => item.original_name.toLowerCase().includes(searchQuery.toLowerCase())),
+           serieList : serieList.filter(item => item.original_name.toLowerCase().includes(searchQuery.toLowerCase())),
         }
+    }, [serieList, serieTopList, searchQuery]);
 
-        const search = movieList.filter(item => item.original_title.toLowerCase().startsWith(searchQuery.toLowerCase()));
-        //console.log(search);
 
-        return search;
-    }, [searchQuery, movieList, movieTopList]); 
 
     //serie top rated
-    const filteredSerieTopList = useMemo(() => {
+  /*  const filteredSerieTopList = useMemo(() => {
         if (!searchQuery) {
             return serieTopList;
         }
 
-        const search = serieTopList.filter(item => item.original_name.toLowerCase().startsWith(searchQuery.toLowerCase()));
+        const search = 
         // console.log(search);
 
         return search;
@@ -83,6 +77,7 @@ const SearchPage = ({ navigation }) => {
 
         return search;
     }, [serieList, searchQuery]);
+    */
 
     const renderItemMovie = useCallback(({ item }) => {
         // console.log(item);
@@ -143,13 +138,13 @@ const SearchPage = ({ navigation }) => {
                     <Text style={styles.title} > Top Serie TV </Text>
                     <Animated.FlatList
                         horizontal={true}
-                        data={filteredSerieTopList}
+                        data={filteredListMovie.serieTopList}
                         renderItem={renderItemSerie}
                     />
                     <Text style={styles.title} > Popular Serie TV </Text>
                     <Animated.FlatList
                         horizontal={true}
-                        data={filteredSerieList}
+                        data={filteredListMovie.serieList}
                         renderItem={renderItemSerie}
                     />
                     <View style={styles.bottomContainer} />

@@ -28,11 +28,11 @@ export const useFavorites = () => {
 
         setFavorites(prev => ([...prev, serie]));
        
-    }, [])
+    }, [favorites]);
 
     const addFavorite  = useCallback(async (serie) => {
        saveFavorites('favorites', serie);
-    }, []);
+    }, [saveFavorites]);
 
     const isFavorite = useCallback((id) => favorites.findIndex(fav => fav.id === id) !== -1, [favorites]);
 
