@@ -24,6 +24,19 @@ const SearchPage = ({ navigation }) => {
         // console.warn(query);
     };
 
+    const filteredList = useMemo(() => {
+        if (!searchQuery || searchQuery.length < 3) {
+            return {
+                movieList,
+                movieTopList,
+            }
+        }
+        return {
+            movieTopList: movieTopList.filter(item => item.original_title.toLowerCase().includes(searchQuery.toLowerCase())),
+            movieList: movieList.filter(item => item.original_title.toLowerCase().includes(searchQuery.toLowerCase())),
+        }
+    }, [movieList, movieTopList, searchQuery]);
+
     //movie top rated
      const filteredMovieTopList = useMemo(() => {
         if (!searchQuery) {
@@ -31,7 +44,7 @@ const SearchPage = ({ navigation }) => {
         }
 
         const search =  movieTopList.filter(item => item.original_title.toLowerCase().startsWith(searchQuery.toLowerCase()));
-
+        
         return search;
     }, [movieTopList, searchQuery]); 
 
@@ -118,13 +131,13 @@ const SearchPage = ({ navigation }) => {
                     <Text style={styles.title} > Top Film </Text>
                     <Animated.FlatList
                         horizontal={true}
-                        data={filteredMovieTopList}
+                        data={filteredList.movieTopList}
                         renderItem={renderItemMovie}
                     />
                     <Text style={styles.title} > Popular Film </Text>
                     <Animated.FlatList
                         horizontal={true}
-                        data={filteredMovieList}
+                        data={filteredList.movieList}
                         renderItem={renderItemMovie}
                     />
                     <Text style={styles.title} > Top Serie TV </Text>
